@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
+
+:root {
+  --color-1: rgb(75, 159, 75);
+  --color-2: white;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  background-color: var(--color-2);
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  min-height: 100vh;
+  margin: 0;
+}
+
+section {
+  display: grid;
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+input {
+  background-color: lightgray;
+  border: none;
+  outline-offset: none;
+  padding: .5rem;
+  border-radius: .2rem;
+  font-size: large;
+}
+
+input:focus {
+  outline: dotted;
+}
+
+button {
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: var(--color-1);
+  color: white;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+}
+
+#result > ul {
+  color: darkcyan;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+.cart_side {
+  padding: 1rem;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+
+.cart_side--green {
+  background-color: var(--color-1);
+  color: white;
+}
+
+@media (width >= 500px) {
+  section {
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: -5px 5px 15px rgb(90, 90, 90);
+  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 55vh;
+  }
+}
