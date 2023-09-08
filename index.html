@@ -9,20 +9,22 @@
 </head>
 
 <body>
-  <main>
-    <div class="cart_side">
+  <main class="card">
+    <div class="card_side">
       <h1>Hidratación Basal</h1>
       <label for="weight">Peso en kilogramos</label>
       <input type="number" min="0" id="weight"/>
-      <!-- TODO: Insertar errores con js -->
+      <!-- TODO: Insertar errores con js y cambiar color de fondo del input -->
+      <p class="error"></p>
       <button onclick="calculate()">CALCULAR</button>
       <div id="result">
-
+        <!-- TODO: Aquí van los resultados -->
       </div>
     </div>
-    <div class="cart_side cart_side--green">
+    <div class="card_side card_side--green">
       <h2>¿Como calcularlo?</h2>
-      <ul>
+      <ul id="explanation">
+
         <!-- TODO: Insertar descripción con js según formula utilizada -->
         <!-- TODO: Por defecto el valor explica cual algoritmo utiliza según el peso -->
         <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>

@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 :root {
-  --color-1: rgb(75, 159, 75);
-  --color-2: white;
+  --card-bg-color: #f6f5f7;
+  --card-bg-color2: rgb(75, 159, 75);
+  --default-text-color: #3E363F;
+  --result-color: #0A81D1;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
-  background-color: var(--color-2);
+  background-color: var(--card-bg-color);
+  color: var(--default-text-color);
+
   display: grid;
   place-items: center;
   min-height: 100dvh;
@@ -16,37 +20,31 @@ body {
   margin: 0;
 }
 
-main {
-  display: grid;
-  min-height: 100dvh;
-  min-height: 100vh;
-}
-
 h1, h2 {
   font-weight: 800;
   font-size: 2rem;
+}
+
+label {
+  margin-bottom: 1rem;
 }
 
 input {
   background-color: lightgray;
   border: none;
   outline-offset: none;
-  padding: .5rem;
+  padding: .9rem 1rem;
   border-radius: .2rem;
   font-size: large;
 }
 
-input:focus {
-  outline: dotted;
-}
-
 button {
-  font-weight: 400;
+  font-weight: bold;
   font-size: 1rem;
-  background-color: var(--color-1);
+  background-color: var(--card-bg-color2);
   color: white;
   margin: 1rem;
-  padding: 1rem;
+  padding: 1rem 2.5rem;
   border-radius: 1.5rem;
   border: none;
   outline: none;
@@ -59,33 +57,56 @@ button:active {
 	transform: scale(0.95);
 }
 
-#result > ul {
-  color: darkcyan;
-  font-weight: 800;
-  font-size: 1.7rem;
+input:focus {
+  outline: dotted;
 }
 
-.cart_side {
-  padding: 1rem;
+.card {
+  display: grid;
+  width: 100%;
+  min-height: 100%;
+}
+
+#result > ul {
+    color: var(--result-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: .3rem;
+    display: none;
+}
+
+.card_side {
+  padding: 2.7rem;
   display: grid;
   align-content: center;
   justify-items: center;
 }
 
-.cart_side--green {
-  background-color: var(--color-1);
+.card_side--green {
+  background-color: var(--card-bg-color2);
   color: white;
 }
 
-@media (width >= 500px) {
-  main {
+.error {
+  color: red;
+  font-weight: bold;
+  /* Esto para evitar que se desplace el contenido al mostrar el error */
+  visibility: hidden;
+}
+
+@media (width >= 768px) {
+  body {
+    margin: 1rem;
+  }
+
+  .card {
     border-radius: .5rem;
     overflow: hidden;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
     0 10px 10px rgba(0,0,0,0.22);
   
-    display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 55vh;
+    width: inherit;
   }
 }
