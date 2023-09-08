@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 :root {
-  --card-bg-color: #f6f5f7;
-  --card-bg-color2: rgb(75, 159, 75);
+  --default-bg-color: #f6f5f7;
   --default-text-color: #3E363F;
+  --card-bg-color2: rgb(75, 159, 75);
   --result-color: #0A81D1;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
-  background-color: var(--card-bg-color);
+  background-color: var(--default-bg-color);
   color: var(--default-text-color);
 
   display: grid;
@@ -21,7 +20,7 @@ body {
 }
 
 h1, h2 {
-  font-weight: 800;
+  font-weight: bold;
   font-size: 2rem;
 }
 
