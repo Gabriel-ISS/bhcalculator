@@ -19,9 +19,14 @@ body {
   margin: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: bold;
   font-size: 2rem;
+}
+
+h1 > em {
+  color: var(--result-color);
 }
 
 label {
@@ -37,27 +42,26 @@ input {
   font-size: large;
 }
 
-button {
-  font-weight: bold;
-  font-size: 1rem;
-  background-color: var(--card-bg-color2);
-  color: white;
-  margin: 1rem;
-  padding: 1rem 2.5rem;
-  border-radius: 1.5rem;
-  border: none;
-  outline: none;
-  text-transform: uppercase;
-	letter-spacing: 1px;
-	transition: transform 20ms ease-in;
-}
-
-button:active {
-	transform: scale(0.95);
+.errored_input {
+  background-color: lightcoral;
 }
 
 input:focus {
   outline: dotted;
+}
+
+#error {
+  color: red;
+  font-weight: bold;
+  /* Esto para evitar que se desplace el contenido al mostrar el error */
+  visibility: hidden;
+}
+
+#result>ul {
+  color: var(--result-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: .3rem;
 }
 
 .card {
@@ -66,13 +70,6 @@ input:focus {
   min-height: 100%;
 }
 
-#result > ul {
-    color: var(--result-color);
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: .3rem;
-    display: none;
-}
 
 .card_side {
   padding: 2.7rem;
@@ -86,14 +83,7 @@ input:focus {
   color: white;
 }
 
-.error {
-  color: red;
-  font-weight: bold;
-  /* Esto para evitar que se desplace el contenido al mostrar el error */
-  visibility: hidden;
-}
-
-@media (width >= 768px) {
+@media (width >=768px) {
   body {
     margin: 1rem;
   }
@@ -101,9 +91,9 @@ input:focus {
   .card {
     border-radius: .5rem;
     overflow: hidden;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-    0 10px 10px rgba(0,0,0,0.22);
-  
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+      0 10px 10px rgba(0, 0, 0, 0.22);
+
     grid-template-columns: 1fr 1fr;
     min-height: 55vh;
     width: inherit;

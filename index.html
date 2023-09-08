@@ -12,30 +12,19 @@
 <body>
   <main class="card">
     <div class="card_side">
-      <h1>Hidratación Basal</h1>
+      <h1>Calculadora de <em>Hidratación Basal</em></h1>
       <label for="weight">Peso en kilogramos</label>
       <input type="number" min="0" id="weight"/>
       <!-- TODO: Insertar errores con js y cambiar color de fondo del input -->
-      <p class="error"></p>
-      <button onclick="calculate()">CALCULAR</button>
+      <p id="error"></p>
       <div id="result">
-        <!-- TODO: Aquí van los resultados -->
+
       </div>
     </div>
     <div class="card_side card_side--green">
       <h2>¿Como calcularlo?</h2>
       <ul id="explanation">
-
-        <!-- TODO: Insertar descripción con js según formula utilizada -->
-        <!-- TODO: Por defecto el valor explica cual algoritmo utiliza según el peso -->
-        <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>
-        <li>Se suman 50cc por cada kilo por arriba de 10kg, hasta los 20kg.</li>
-        <li>De 20kg para arriba, se suman 20cc por cada kilo adicional.</li>
-
-        <!-- TODO: Definir correctamente los pasos con formula visualmente atractiva -->
-        <li>Se halla la superficie corporal mediante el siguiente calculo: ...</li>
-        <li>Se multiplica por ...</li>
-
+        
       </ul>
     </div>
   </main>
