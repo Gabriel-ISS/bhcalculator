@@ -13,11 +13,18 @@
   <main class="card">
     <div class="card_side">
       <h1>Calculadora de <em>Hidratación Basal</em></h1>
-      <label for="weight">Peso en kilogramos</label>
-      <input type="number" autofocus min="0" id="weight" />
+      <label for="weight">
+        Peso en <fieldset id="unit">
+          <input type="radio" name="unit" id="kg" value="kg" checked/>
+          <label for="kg">Kilogramos</label>
+          <input type="radio" name="unit" id="lb" value="lb"/>
+          <label for="lb">Libras</label>
+        </fieldset>
+      </label>
+      <input id="weight" type="number" autofocus min="0" />
       <p id="error"></p>
       <div id="result">
-        
+
       </div>
     </div>
     <div class="card_side card_side--green">

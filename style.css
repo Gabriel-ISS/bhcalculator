@@ -34,8 +34,43 @@ label {
   margin-bottom: 1rem;
 }
 
-input {
-  background-color: lightgray;
+.errored_input {
+  background-color: lightcoral;
+}
+
+#unit {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 1rem;
+  padding: .1rem;
+  margin: 0;
+  margin-left: .5rem;
+  font-size: small;
+
+  background-color: var(--default-bg-color);
+  outline: var(--result-color) solid;
+  border: none;
+}
+
+#unit input {
+  display: none;
+}
+
+#unit label {
+  text-align: center;
+  background-color: var(--default-bg-color);
+  border-radius: 1rem;
+  margin: 0;
+  padding: .2rem;
+}
+
+#unit input:checked + label {
+  background-color: var(--result-color);
+  color: white;
+}
+
+#weight {
+  background-color: lightgrey;
   border: none;
   outline-offset: none;
   padding: .9rem 1rem;
@@ -43,11 +78,7 @@ input {
   font-size: large;
 }
 
-.errored_input {
-  background-color: lightcoral;
-}
-
-input:focus {
+#weight:focus {
   outline: dotted;
 }
 

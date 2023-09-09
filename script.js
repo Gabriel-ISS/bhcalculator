@@ -3,6 +3,8 @@
  * Agregar tooltip sobre de que se trata
  */
 const WEIGHT_INPUT = document.getElementById('weight');
+const KILOGRAM_UNIT = document.getElementById('kg');
+const POUND_UNIT = document.getElementById('lb');
 const RESULT_CONTAINER = document.getElementById('result');
 const ERROR = document.getElementById('error');
 const EXPLANATION_CONTAINER = document.getElementById('explanation')
@@ -24,6 +26,8 @@ const BY_CS_METHOD_EXPLANATION = `
 `
 
 WEIGHT_INPUT.addEventListener('input', calculate)
+KILOGRAM_UNIT.addEventListener('change', calculate)
+POUND_UNIT.addEventListener('change', calculate)
 // se ejecuta apenas carga el documento
 chargeGenericExplanation()
 
@@ -37,9 +41,14 @@ function calculate(e) {
     RESULT_CONTAINER.innerHTML = ''
     return;
   }
-  const weight = Number(e.target.value)
+  let weight = Number(e.target.value)
   let hasError = validateWeight(weight)
   if (hasError) return;
+  console.log(POUND_UNIT.checked)
+  // convertir a kilogramos
+  if (POUND_UNIT.checked) {
+    weight *= 0.45359237
+  }
   if (weight <= 30) {
     const dailyVolume = HollidaySegar(weight)
     RESULT_CONTAINER.innerHTML = getResultHTML(dailyVolume)
@@ -57,7 +66,7 @@ function calculate(e) {
   }
 }
 
-let prevContent = GENERIC_EXPLANATION
+let prevContent = GENERIC_EXPLANATION;
 let lastSetTransitionExecution;
 let lastTimeoutExecution;
 function setTransition(element, content) {
