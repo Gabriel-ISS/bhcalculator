@@ -1,6 +1,4 @@
 /** TODO:
- * Animaciones ...
- * 
  * Agregar nuevas unidades de medida
  * Agregar tooltip sobre de que se trata
  */
@@ -40,7 +38,8 @@ function calculate(e) {
     return;
   }
   const weight = Number(e.target.value)
-  validateWeight(weight)
+  let hasError = validateWeight(weight)
+  if (hasError) return;
   if (weight <= 30) {
     const dailyVolume = HollidaySegar(weight)
     RESULT_CONTAINER.innerHTML = getResultHTML(dailyVolume)
@@ -92,11 +91,14 @@ function validateWeight(value) {
     ERROR.style.visibility = 'hidden'
     WEIGHT_INPUT.classList.remove('errored_input')
   }
+  let hastError = true
   if (value < 0) {
     showError('El peso debe ser mayor a 0')
   } else {
+    hastError = false
     hideError()
   }
+  return hastError
 }
 
 function HollidaySegar(weight) {
