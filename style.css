@@ -96,6 +96,11 @@ td {
   color: white;
 }
 
+#explanation {
+  transition: opacity 400ms;
+  min-height: 10rem;
+}
+
 @media (width >=768px) {
   body {
     margin: 1rem;

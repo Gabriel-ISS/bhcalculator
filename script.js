@@ -35,7 +35,7 @@ function chargeGenericExplanation() {
 
 function calculate(e) {
   if (e.target.value === '') {
-    chargeGenericExplanation()
+    setTransition(EXPLANATION_CONTAINER, GENERIC_EXPLANATION)
     RESULT_CONTAINER.innerHTML = ''
     return;
   }
@@ -44,7 +44,7 @@ function calculate(e) {
   if (weight <= 30) {
     const dailyVolume = HollidaySegar(weight)
     RESULT_CONTAINER.innerHTML = getResultHTML(dailyVolume)
-    EXPLANATION_CONTAINER.innerHTML = HOLLIDAY_SEGAR_EXPLANATION
+    setTransition(EXPLANATION_CONTAINER, HOLLIDAY_SEGAR_EXPLANATION)
   } else {
     const CS = getCorporalSurface(weight)
     const
@@ -54,8 +54,32 @@ function calculate(e) {
       ${getResultHTML(dailyVolume1, 'x1500')}
       ${getResultHTML(dailyVolume2, 'x2000')}
     `
-    EXPLANATION_CONTAINER.innerHTML = BY_CS_METHOD_EXPLANATION
+    setTransition(EXPLANATION_CONTAINER, BY_CS_METHOD_EXPLANATION)
   }
+}
+
+let prevContent = GENERIC_EXPLANATION
+let lastSetTransitionExecution;
+let lastTimeoutExecution;
+function setTransition(element, content) {
+  if (prevContent === String(content)) return;
+  lastSetTransitionExecution = Date.now()
+  // se establece la opacidad en 0
+  element.style.opacity = 0
+  // ocurre la animación
+  setTimeout(() => {
+    lastTimeoutExecution = Date.now()
+    const timeBetween = lastTimeoutExecution - lastSetTransitionExecution
+    // cuando quiero que se cancele setTimeout, cuando se realiza un cambio antes de los 400ms
+    // es decir, cuando se ejecuta la función antes de que termine la transición
+    if (timeBetween < 400) return;
+    // se realiza el cambio
+    element.innerHTML = content
+    prevContent = String(content)
+    // opacidad 100
+    element.style.opacity = 100
+    // ocurre la animación
+  }, 400)
 }
 
 function validateWeight(value) {
@@ -76,7 +100,6 @@ function validateWeight(value) {
 }
 
 function HollidaySegar(weight) {
-  console.log(weight)
   if (weight <= 10) {
     return weight * 100
   } else if (weight > 10 && weight <= 20) {
