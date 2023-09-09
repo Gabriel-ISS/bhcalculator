@@ -13,7 +13,6 @@ body {
   color: var(--default-text-color);
 
   display: grid;
-  place-items: center;
   min-height: 100dvh;
   min-height: 100vh;
   margin: 0;
@@ -100,6 +99,7 @@ td {
 @media (width >=768px) {
   body {
     margin: 1rem;
+    place-items: center;
   }
 
   .card {
@@ -108,8 +108,9 @@ td {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
       0 10px 10px rgba(0, 0, 0, 0.22);
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     min-height: 55vh;
-    width: inherit;
+    width: initial;
+    max-width: 1000px;
   }
 }
