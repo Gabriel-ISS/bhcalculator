@@ -1,11 +1,8 @@
 /** TODO:
- * Cambiar la explicación (especificar cual de los dos se uso)
- * Agregar validación (números y no negativos)
  * Animaciones ...
  * 
  * Agregar nuevas unidades de medida
  * Agregar tooltip sobre de que se trata
- * Organizar resultado
  */
 const WEIGHT_INPUT = document.getElementById('weight');
 const RESULT_CONTAINER = document.getElementById('result');
@@ -13,19 +10,19 @@ const ERROR = document.getElementById('error');
 const EXPLANATION_CONTAINER = document.getElementById('explanation')
 
 const GENERIC_EXPLANATION = `
-  <li>Si el peso es menor a 30 se calcula mediante la formula de Holliday-Segar.</li>
-  <li>
+  <p>Si el peso es menor a 30 se calcula mediante la formula de Holliday-Segar.</p>
+  <p>
     Si el peso es mayor a 30 se calcula la superficie corporal y se multiplica el el resultado por 1500 y por 2000, generando dos resultados.
-  </li>
+  </p>
 `
 const HOLLIDAY_SEGAR_EXPLANATION = `
-  <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>
-  <li>Se suman 50cc por cada kilo por arriba de 10kg, hasta los 20kg.</li>
-  <li>De 20kg para arriba, se suman 20cc por cada kilo adicional.</li>
+  <p>De 0kg a 10kg, se calcula 100cc por cada kilo.</p>
+  <p>Se suman 50cc por cada kilo por arriba de 10kg, hasta los 20kg.</p>
+  <p>De 20kg para arriba, se suman 20cc por cada kilo adicional.</p>
 `
 const BY_CS_METHOD_EXPLANATION = `
-  <li>Se calcula la superficie corporal.</li>
-  <li>Se multiplica la superficie corporal por 1500 y por 2000.</li>
+  <p>Se calcula la superficie corporal.</p>
+  <p>Se multiplica la superficie corporal por 1500 y por 2000.</p>
 `
 
 WEIGHT_INPUT.addEventListener('input', calculate)
@@ -54,10 +51,8 @@ function calculate(e) {
       dailyVolume1 = CS * 1500,
       dailyVolume2 = CS * 2000;
     RESULT_CONTAINER.innerHTML = `
-      <h3>R1</h3>
-      ${getResultHTML(dailyVolume1)}
-      <h3>R2</h3>
-      ${getResultHTML(dailyVolume2)}
+      ${getResultHTML(dailyVolume1, 'x1500')}
+      ${getResultHTML(dailyVolume2, 'x2000')}
     `
     EXPLANATION_CONTAINER.innerHTML = BY_CS_METHOD_EXPLANATION
   }
@@ -97,12 +92,27 @@ function getCorporalSurface(weight) {
   return ((weight * 4) + 7) / (weight + 90)
 }
 
-function getResultHTML(dailyVolume) {
+function getResultHTML(dailyVolume, title = null) {
   const maintenance = (dailyVolume / 24).toFixed(1)
   const midMaintenance = (maintenance * 1.5).toFixed(1)
-  return `<ul>
-    <li>${maintenance} cc/hr</li>
-    <li>${midMaintenance} cc/hr (m + m/2)</li>
-  </ul>`
+  return `
+  <table>
+    ${title ? `<caption>${title}</caption>` : ''}
+    <thead>
+      <tr>
+        <th>Volumen diario</th>
+        <th>Volumen por hora</th>
+        <th>Volumen por hora (m + m2)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>${dailyVolume.toFixed(1)} cc</td>
+        <td>${maintenance} cc</td>
+        <td>${midMaintenance} cc</td>
+      </tr>
+    </tbody>
+  </table>
+`
 }
 

@@ -23,10 +23,12 @@ h1,
 h2 {
   font-weight: bold;
   font-size: 2rem;
+  text-align: center;
 }
 
-h1 > em {
+h1>em {
   color: var(--result-color);
+  display: block;
 }
 
 label {
@@ -57,11 +59,24 @@ input:focus {
   visibility: hidden;
 }
 
-#result>ul {
+table {
+  border-collapse: collapse;
   color: var(--result-color);
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-bottom: .3rem;
+}
+
+caption {
+  font-size: 1.3rem;
+  text-decoration: underline double;
+  padding: 1rem;
+}
+
+th {
+  border-bottom: black solid 1px;
+}
+
+td {
+  padding: .7rem;
+  text-align: center;
 }
 
 .card {
@@ -69,7 +84,6 @@ input:focus {
   width: 100%;
   min-height: 100%;
 }
-
 
 .card_side {
   padding: 2.7rem;
