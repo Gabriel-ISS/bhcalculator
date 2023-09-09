@@ -35,16 +35,18 @@ function chargeGenericExplanation() {
   EXPLANATION_CONTAINER.innerHTML = GENERIC_EXPLANATION
 }
 
-function calculate(e) {
+let lastWeight = 0
+function calculate(e, number = null) {
   if (e.target.value === '') {
     setTransition(EXPLANATION_CONTAINER, GENERIC_EXPLANATION)
     RESULT_CONTAINER.innerHTML = ''
     return;
   }
-  let weight = Number(e.target.value)
+  let weight = e.target.type === 'number' ? Number(e.target.value) : lastWeight 
+  lastWeight = weight
   let hasError = validateWeight(weight)
   if (hasError) return;
-  console.log(POUND_UNIT.checked)
+  lastWeight = weight;
   // convertir a kilogramos
   if (POUND_UNIT.checked) {
     weight *= 0.45359237
