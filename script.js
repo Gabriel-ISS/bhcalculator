@@ -140,4 +140,3 @@ function getResultHTML(dailyVolume, title = null) {
   </table>
 `
 }
-
