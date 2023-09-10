@@ -36,7 +36,7 @@ function chargeGenericExplanation() {
 }
 
 let lastWeight = 0
-function calculate(e, number = null) {
+function calculate(e) {
   if (e.target.value === '') {
     setTransition(EXPLANATION_CONTAINER, GENERIC_EXPLANATION)
     RESULT_CONTAINER.innerHTML = ''
@@ -138,7 +138,7 @@ function getResultHTML(dailyVolume, title = null) {
       <tr>
         <th>Volumen diario</th>
         <th>Volumen por hora</th>
-        <th>Volumen por hora (m + m2)</th>
+        <th>Volumen por hora (m + m/2)</th>
       </tr>
     </thead>
     <tbody>
